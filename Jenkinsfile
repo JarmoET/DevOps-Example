@@ -6,13 +6,13 @@ pipeline {
   stages {
     stage('Stop previous Docker container') {
         agent any 
-        steps {
-            sh 'echo PÄIVITYS ALKAA'
+        steps {           
             sh 'docker exec -i Docker_example pkill node || true && docker stop Docker_example || true && docker rm Docker_example || true'
         }
     }
 
   stage('Run app in Docker container') {
+      sh 'echo PÄIVITYS ALKAA'
       agent {
         docker {
           image 'node:8-alpine'
